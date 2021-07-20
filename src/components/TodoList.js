@@ -6,6 +6,8 @@ export default class TodoList extends Component {
       <section>
         <h2>TodoList</h2>
         <Item></Item>
+        <Item></Item>
+        <Item></Item>
       </section>
     );
   }

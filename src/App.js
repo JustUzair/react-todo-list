@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { v1 as uuid } from "uuid";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
@@ -30,10 +31,15 @@ class App extends Component {
     });
   };
   clearList = () => {
-    console.log("Clear List");
+    this.setState({
+      items: [],
+    });
   };
   handleDelete = id => {
-    console.log("handle delete");
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+    this.setState({
+      items: filteredItems,
+    });
   };
   handleEdit = id => {
     console.log("handle edit");

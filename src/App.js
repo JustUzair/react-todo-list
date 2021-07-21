@@ -18,6 +18,7 @@ class App extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    if (this.state.item.length === 0) return;
     const newItem = {
       id: this.state.id,
       title: this.state.item,

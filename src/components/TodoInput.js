@@ -2,6 +2,10 @@ import React, { Component } from "react";
 ///Todo Input (Github)
 
 export default class TodoInput extends Component {
+  defaultBtnStyle = "btn col-12 mt-3 text-uppercase";
+  componentDidMount() {
+    this.todoInput.focus();
+  }
   render() {
     const { item, handleChange, handleSubmit, editItem } = this.props;
     return (
@@ -19,10 +23,20 @@ export default class TodoInput extends Component {
               placeholder="Add To-Do Item"
               value={item}
               onChange={handleChange}
+              ref={el => {
+                this.todoInput = el;
+              }}
             />
           </div>
-          <button className="btn col-12 btn-primary mt-3 text-uppercase">
-            Add
+          <button
+            disabled={item === "" ? true : false}
+            className={
+              editItem
+                ? `${this.defaultBtnStyle} btn-success`
+                : `${this.defaultBtnStyle} btn-primary`
+            }
+          >
+            {editItem ? "Edit Item" : "Add Item"}
           </button>
         </form>
       </div>
